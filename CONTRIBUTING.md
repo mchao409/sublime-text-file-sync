@@ -6,7 +6,7 @@
 3. Clone the repository using `git clone`. 
 
 #### Running the example plugin
-1. In the repository, open up `src/example_plugin.py` in Sublime Text
-2. Open the console through `View > Show Console`
-3. Open `src/plugin_test.txt` in another tab
-4. While viewing `plugin_test.txt`, type in `view.run_command('HelloWorld')` in the console. You should see `Hello, World!` show up in `plugin_test.txt`.
+1. In the repository, open up `example_plugin.py` in Sublime Text
+2. Open the console in Sublime through `View > Show Console`
+3. Open `plugin_test.txt` in another tab
+4. While viewing `plugin_test.txt`, type in `view.run_command('example')` in the console. You should see `Hello, World!` show up in `plugin_test.txt`.
