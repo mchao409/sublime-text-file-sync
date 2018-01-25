@@ -10,5 +10,4 @@ This is a plugin for Sublime Text that allows you to to synchronize your files u
 * Share files with other people
 
 ##### Progress:
-Planning on developing the "syncing" part of the plugin for the class, and combining that into the plugin if time allows. This is because Sublime Text's plugin API uses their own version of Python that doesn't include many third-party packages, and getting around that is difficult. See the first answer to [this Stack OverFlow post](https://stackoverflow.com/questions/47483393/sublime-text-3-creating-plugin-adding-external-python-libraries). If you have any ideas about this, please let me know!
-
+Can only use default modules included in Python 3 or include [dependency]("https://github.com/wbond/package_control_channel/blob/master/repository/dependencies.json") in the plugin code.
