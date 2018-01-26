@@ -10,3 +10,6 @@
 2. Open the console in Sublime through `View > Show Console`
 3. Open `plugin_test.txt` in another tab
 4. While viewing `plugin_test.txt`, type in `view.run_command('example')` in the console.
+
+#### Jupyter Notebooks
+Jupyter Notebooks can't be accessed from the ~/Library directory (at least I don't think so?), so you'll need to move it to another location on your computer to work on it and copy it back into the git repository folder once you're finished.
