@@ -2,7 +2,7 @@
 
 #### Installing the repository
 1. Make sure you have Sublime Text 3 installed. You can get it [here](https://www.sublimetext.com/3).
-2. Open your command line and type in `cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User`. This is where Sublime Text finds all of its plugins.
+2. Open your command line and type in `cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/`. This is where Sublime Text finds all of its plugins.
 3. Clone the repository using `git clone`. 
 
 #### Running the example plugin
