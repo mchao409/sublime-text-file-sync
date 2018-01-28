@@ -13,3 +13,6 @@
 
 #### Jupyter Notebooks
 Jupyter Notebooks can't be accessed from the ~/Library directory (at least I don't think so?), so you'll need to move it to another location on your computer to work on it and copy it back into the git repository folder once you're finished.
+
+##### External Libraries
+Can only use default modules included in Python 3 -- there are dependencies available for external libraries, but many do not seem to work, so sticking with default installed libraries is the safest bet.
