@@ -1,0 +1,26 @@
+[
+    {
+        "caption": "-",
+        "id": "separator"
+    },
+    {
+        "caption": "Sublime-Sync",
+        // "mnemonic": "f",
+        "id": "Sublime-Sync",
+        "children":
+        [
+            {
+                "command": "update_local",
+                "caption": "Update Local"
+            },
+            {
+                "command": "update_remote",
+                "caption": "Update Remote"
+            },           
+        ]
+    },
+    {
+        "caption": "-",
+        "id": "separator"
+    }
+]
