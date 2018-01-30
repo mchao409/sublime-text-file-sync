@@ -1,7 +1,3 @@
-import urllib
-import urllib.request
-import json
-
 class DropboxRequest:
     def __init__(self,token):
         self.token = token
@@ -14,10 +10,15 @@ class DropboxRequest:
         Returns: 
             a dict object
         """
-        req = urllib.request.Request(url,json.dumps(data).encode(),headers)
+        if(data == None):
+            req = urllib.request.Request(url,None,headers)
+        else:
+            req = urllib.request.Request(url,json.dumps(data).encode(),headers)
+
+
         response = urllib.request.urlopen(req)
-        return json.loads(response.read().decode("utf-8"))
-    
+        return response.read().decode("utf-8")
+
     def list_folder(self,path):
         """ Gets a list of all files in a folder
         Args: 
@@ -29,6 +30,16 @@ class DropboxRequest:
                   "Content-Type": "application/json"}
         data = {"path": path}
         return DropboxRequest.make_request(url, headers,data=data)
+    
+    def download(self,path):
+        url = "https://content.dropboxapi.com/2/files/download"
+
+        headers = {
+    "Authorization": "Bearer " + self.token,
+    "Dropbox-API-Arg": '{"path":"/my-plugin.py"}'
+        }
         
+        return DropboxRequest.make_request(url, headers)
+
         
         
