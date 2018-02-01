@@ -9,4 +9,9 @@ This is a plugin for Sublime Text that allows you to to synchronize your files u
 * Share files with other people
 
 
+#### Want to contribute?
+Head over to the [CONTRIBUTING](#CONTRIBUTING.md)
+
+
+
 
