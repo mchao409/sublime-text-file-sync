@@ -1,3 +1,9 @@
+import urllib
+import json
+
+# TODO: Dealing with invalid arguments
+
+
 class DropboxRequest:
     def __init__(self,token):
         self.token = token
@@ -6,9 +12,9 @@ class DropboxRequest:
     def make_request(url, headers, data=None):
         """ Makes a request to Dropbox's API
         Args: 
-            url, headers of call
+            url of call, headers of call, optional data
         Returns: 
-            a dict object
+            Request string
         """
         if(data == None):
             req = urllib.request.Request(url,None,headers)
@@ -18,7 +24,20 @@ class DropboxRequest:
 
         response = urllib.request.urlopen(req)
         return response.read().decode("utf-8")
-
+    
+    def get_file_id(self,file_name):
+        """Gets the Dropbox id of a file
+        Args:
+            file_name: Requested id's file name
+        Returns: 
+            String of file_name's id
+        """
+        list_files = self.list_folder("")
+        for file_info in list_files:
+            if file_info["name"].lower() == file_name.lower():
+                return file_info["id"]
+        return "NOT FOUND" ## Throw Exception -- need to implement
+    
     def list_folder(self,path):
         """ Gets a list of all files in a folder
         Args: 
@@ -28,18 +47,22 @@ class DropboxRequest:
         url = "https://api.dropboxapi.com/2/files/list_folder"
         headers = {"Authorization": "Bearer " + self.token,
                   "Content-Type": "application/json"}
-        data = {"path": path}
-        return DropboxRequest.make_request(url, headers,data=data)
+        data = {"path": path,
+               "recursive": True}
+        return json.loads(DropboxRequest.make_request(url, headers,data=data))["entries"]
     
-    def download(self,path):
+    def download(self,name):
+        """Grabs the content of the file currently hosted on Dropbox
+        Args: 
+            name: The name of the file
+        Returns:
+            A string containing the content of the corresponding file in Dropbox
+        
+        """
+        file_id = self.get_file_id(name)
         url = "https://content.dropboxapi.com/2/files/download"
-
         headers = {
-    "Authorization": "Bearer " + self.token,
-    "Dropbox-API-Arg": '{"path":"/my-plugin.py"}'
+            "Authorization": "Bearer " + self.token,
+            "Dropbox-API-Arg": "{\"path\":\"" + file_id + "\"}"
         }
-        
         return DropboxRequest.make_request(url, headers)
-
-        
-        
