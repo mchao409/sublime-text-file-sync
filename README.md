@@ -10,7 +10,7 @@ This is a plugin for Sublime Text that allows you to to synchronize your files u
 
 
 #### Want to contribute?
-Head over to the [CONTRIBUTING](#CONTRIBUTING.md)
+Head over to the [CONTRIBUTING guide](CONTRIBUTING.md)
 
 
 
