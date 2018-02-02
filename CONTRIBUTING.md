@@ -5,6 +5,7 @@
 * Dropbox `update_remote` command
 * `DropboxRequest.py`: deal with invalid arguments
 * Add OAuth2 functionality to plugin --> not sure how to go about this yet.
+* Figure out environment variables for application key/secret.
 
 #### Installing the repository
 1. Make sure you have Sublime Text 3 installed. You can get it [here](https://www.sublimetext.com/3).

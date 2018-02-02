@@ -66,3 +66,12 @@ class DropboxRequest:
             "Dropbox-API-Arg": "{\"path\":\"" + file_id + "\"}"
         }
         return DropboxRequest.make_request(url, headers)
+
+    def update_dropbox(self,rev):
+        pass
+
+
+
+
+
+
