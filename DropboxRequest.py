@@ -19,27 +19,39 @@ class DropboxRequest:
         if(data == None):
             req = urllib.request.Request(url,None,headers)
         else:
-            req = urllib.request.Request(url,json.dumps(data).encode(),headers)
-
-
+            req = urllib.request.Request(url,data,headers)
+#             req = urllib.request.Request(url,json.dumps(data).encode(),headers)
         response = urllib.request.urlopen(req)
         return response.read().decode("utf-8")
     
     def get_file_id(self,file_name):
-        """Gets the Dropbox id of a file
+        """ Gets the Dropbox id of a file
         Args:
             file_name: Requested id's file name
         Returns: 
             String of file_name's id
         """
-        list_files = self.list_folder("")
+        list_files = self.list_folder()
         for file_info in list_files:
             if file_info["name"].lower() == file_name.lower():
                 return file_info["id"]
         return "NOT FOUND" ## Throw Exception -- need to implement
     
-    def list_folder(self,path):
-        """ Gets a list of all files in a folder
+    def get_file_path(self,file_name):
+        """ Gets the Dropbox path of a file
+        Args:
+            file_name: Name of file to get path
+        Returns:
+            String, path to file_name
+        """
+        list_files = self.list_folder()
+        for file_info in list_files:
+            if file_info["name"].lower() == file_name.lower():
+                return file_info["path_lower"]
+        return "NOT FOUND"
+    
+    def list_folder(self):
+        """ Gets a list of all files locally hosted in Dropbox
         Args: 
             path: string path to the folder to look in
         Returns: a dict containing information about that folder
@@ -47,17 +59,16 @@ class DropboxRequest:
         url = "https://api.dropboxapi.com/2/files/list_folder"
         headers = {"Authorization": "Bearer " + self.token,
                   "Content-Type": "application/json"}
-        data = {"path": path,
+        data = {"path": "",
                "recursive": True}
-        return json.loads(DropboxRequest.make_request(url, headers,data=data))["entries"]
+        return json.loads(DropboxRequest.make_request(url, headers,data=json.dumps(data).encode()))["entries"]
     
     def download(self,name):
-        """Grabs the content of the file currently hosted on Dropbox
+        """ Grabs the content of the file currently hosted on Dropbox
         Args: 
             name: The name of the file
         Returns:
             A string containing the content of the corresponding file in Dropbox
-        
         """
         file_id = self.get_file_id(name)
         url = "https://content.dropboxapi.com/2/files/download"
@@ -66,10 +77,26 @@ class DropboxRequest:
             "Dropbox-API-Arg": "{\"path\":\"" + file_id + "\"}"
         }
         return DropboxRequest.make_request(url, headers)
-
-    def update_dropbox(self,rev):
-        pass
-
+    
+    def update_remote(self,dropbox_path, path_to_file):
+        """ Updates the content of the file currently hosted on Dropbox with the given file.
+           If content is not there, the file will be created on Dropbox
+        Args: 
+            dropbox_path: the path to the file on Dropbox
+            path_to_file: the local path to the file
+        Returns:
+            a json file 
+        """
+        url = "https://content.dropboxapi.com/2/files/upload"
+        headers = {
+                "Authorization": "Bearer " + self.token,
+                "Content-Type": "application/octet-stream",
+                "Dropbox-API-Arg": "{\"path\":\"" + dropbox_path + "\",\"mode\":{\".tag\":\"overwrite\"}}"
+        }
+        data = open(path_to_file, "rb").read()
+        return DropboxRequest.make_request(url,headers,data)
+            
+  
 
 
 

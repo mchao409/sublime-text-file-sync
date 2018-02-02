@@ -1,8 +1,6 @@
 import sublime
 import sublime_plugin
 from .DropboxRequest import DropboxRequest
-import os
-import re
 
 class UpdateLocalCommand(sublime_plugin.TextCommand):
 	"""
@@ -21,7 +19,6 @@ class UpdateLocalCommand(sublime_plugin.TextCommand):
 		a = DropboxRequest(token)
 		path_to_file = self.view.file_name()
 		file_name = path_to_file[path_to_file.rfind("/")+1:]
-		print(file_name)
 		text = a.download(file_name)
 
 		# Replace the current text in the file....
