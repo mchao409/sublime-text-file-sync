@@ -2,7 +2,7 @@
 
 
 ### TODO:
-* Dropbox `update_remote` command
+* Heroku Server
 * `DropboxRequest.py`: deal with invalid arguments
 * Add OAuth2 functionality to plugin --> not sure how to go about this yet.
 * Figure out environment variables for application key/secret.

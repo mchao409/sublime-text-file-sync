@@ -10,7 +10,7 @@ class UpdateRemoteCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		# Get app key, secret, token -- private file
 		app_url = "/Users/michellec/Library/Application Support/Sublime Text 3/Packages/sublime-text-file-sync/app_info.txt"
-		f = open(app_url, "r") ## Contains private info about application
+		f = open(app_url, "r") # Contains private info about application
 		APP_KEY = f.readline().rstrip().replace("app key ", "")
 		APP_SECRET = f.readline().rstrip().replace("secret ", "")
 		token = f.readline().rstrip().replace("token ", "")
