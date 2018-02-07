@@ -9,3 +9,6 @@
 ### February 2, 2018
 * Added `update_remote` command to DropboxRequest class, finished `update_local.py`.
 
+### February 6, 2018
+* Research/Work on Django server (code not on GitHub right now)
+

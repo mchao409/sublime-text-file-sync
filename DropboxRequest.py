@@ -3,7 +3,6 @@ import json
 
 # TODO: Dealing with invalid arguments
 
-
 class DropboxRequest:
     def __init__(self,token):
         self.token = token
