@@ -1,8 +1,8 @@
 ## For Contributors
 
-
 ### TODO:
-* Heroku Server
+* (Server)[https://github.com/mchao409/sublimeserver]
+* Add functionality for Google Chrome
 * `DropboxRequest.py`: deal with invalid arguments
 * Add OAuth2 functionality to plugin --> not sure how to go about this yet.
 * Figure out environment variables for application key/secret.
@@ -17,7 +17,6 @@
 1. In the repository, open up `example.py` in Sublime Text
 2. Open the console in Sublime through `View > Show Console`
 3. Type in `view.run_command('example')` in the console and look in the top left corner of the code document.
-
 
 #### Jupyter Notebooks
 Jupyter Notebooks can't be accessed from the ~/Library directory (at least I don't think so?), so if you want to use it, you'll need to move it to another location on your computer to work on it and copy it back into the git repository folder once you're finished.
