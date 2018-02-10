@@ -12,3 +12,9 @@
 ### February 6, 2018
 * Research/Work on Django server (code not on GitHub right now)
 
+### February 8th, 2018
+* Django server added to GitHub, separate repository.
+
+### February 9th, 2018
+* Continue working on OAuth component of project, created a listening server for receiving the token.
+
