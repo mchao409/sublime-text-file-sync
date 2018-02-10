@@ -6,7 +6,6 @@ import socketserver
 import time
 import re
 class MyTCPHandler(socketserver.BaseRequestHandler):
-    data = None
     """
     The request handler class for the server.
     """
@@ -22,13 +21,11 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
             token = re.search("(?<=token=)(.*?)(?=[!\s])", MyTCPHandler.data).group()
             with open("token.txt", "w") as f:
                 f.write(token)
-#             print("here is the data: ")
-#             print(MyTCPHandler.data)
 
 def run_server():
     HOST, PORT = "localhost", 8001
 
-    # Create the server, binding to localhost on port 9999
+    # Create the server, binding to localhost on port 8001
     server = socketserver.TCPServer((HOST, PORT), MyTCPHandler)
     print("Server created")
 
@@ -41,6 +38,5 @@ def run_server():
         server.server_close()
     except:
         server.server_close()
-
 
 run_server()

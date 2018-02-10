@@ -11,7 +11,11 @@
         [
             {
                 "command": "authenticate",
-                "caption": "authenticate"
+                "caption": "Authenticate",
+                "args": {
+                    "should_authenticate": "True"
+                }
+
             },
             {
                 "command": "update_local",
