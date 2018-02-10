@@ -41,6 +41,3 @@ def run_server():
         server.server_close()
     except:
         server.server_close()
-
-
-run_server()
