@@ -10,13 +10,18 @@
         "children":
         [
             {
+                "command": "authenticate",
+                "caption": "authenticate"
+            },
+            {
                 "command": "update_local",
                 "caption": "Update Local"
             },
             {
                 "command": "update_remote",
                 "caption": "Update Remote"
-            },           
+            },
+
         ]
     },
     {
