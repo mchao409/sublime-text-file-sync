@@ -40,7 +40,7 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
             self.request.sendall("HTTP/1.1 200 OK\n".encode())
             token = re.search("(?<=token=)(.*?)(?=[!\s])", data).group()
             current_dir = os.getcwd()
-            with open(current_dir + "/sublime-text-file-sync/token.txt", "w") as f:
+            with open(current_dir + "/sublime-text-file-sync-token.txt", "w") as f:
             	f.write(token)
 
 def run_server():

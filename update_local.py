@@ -9,7 +9,7 @@ class UpdateLocalCommand(sublime_plugin.TextCommand):
 	"""
 	def run(self, edit):
 		current_dir = os.getcwd()
-		token = open(current_dir + "/sublime-text-file-sync/token.txt").readline()
+		token = open(current_dir + "/sublime-text-file-sync-token.txt").readline()
 		print(token)
 
 		a = DropboxRequest(token)
