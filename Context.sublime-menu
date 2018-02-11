@@ -12,9 +12,6 @@
             {
                 "command": "authenticate",
                 "caption": "Authenticate",
-                "args": {
-                    "should_authenticate": "True"
-                }
 
             },
             {

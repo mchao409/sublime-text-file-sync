@@ -1,20 +1,16 @@
 import sublime
 import sublime_plugin
 from .DropboxRequest import DropboxRequest
+import os
 
 class UpdateLocalCommand(sublime_plugin.TextCommand):
 	"""
 	Updates the local window with the file that is hosted on Dropbox. 
 	"""
 	def run(self, edit):
-		# Get app key, secret, token -- private file
-		app_url = "/Users/michellec/Library/Application Support/Sublime Text 3/Packages/sublime-text-file-sync/app_info.txt"
-		f = open(app_url, "r") ## Contains private info about application
-		APP_KEY = f.readline().rstrip().replace("app key ", "")
-		APP_SECRET = f.readline().rstrip().replace("secret ", "")
-
-		# Will eventually need to use server for oauth
-		token = f.readline().rstrip().replace("token ", "")
+		current_dir = os.getcwd()
+		token = open(current_dir + "/sublime-text-file-sync/token.txt").readline()
+		print(token)
 
 		a = DropboxRequest(token)
 		path_to_file = self.view.file_name()

@@ -4,26 +4,26 @@ import socket
 from http.server import HTTPServer
 from http.server import BaseHTTPRequestHandler
 import socketserver
-import time
+import webbrowser
 import re
 import os
 # from . import token_server
 from subprocess import Popen
+import threading
+from Crypto.Cipher import AES
 
-class AuthenticateCommand(sublime_plugin.WindowCommand):
-	def run(self, edit, should_authenticate=False):
-		# os.system("python server/token_server.py")
-		d = os.getcwd()
-		d += "/server/token_server.py"
-		# Popen(["python", "-u", "server/token_server.py"],shell=True)
-		HOST, PORT = "localhost", 8001
-		# run_server()
+class AuthenticateCommand(sublime_plugin.TextCommand):
+	def run(self,edit):
+		server = ServerThread(name="token_server")
+		server.start()
 
 
-		# webbrowser.open("http://localhost:8000/redirect")
+class ServerThread(threading.Thread):
+	def __init__(self,name):
+		threading.Thread.__init__(self, name=name)
 
-		# token_server.run_server()
-
+	def run(self):
+		run_server()
 
 
 class MyTCPHandler(socketserver.BaseRequestHandler):
@@ -34,15 +34,14 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
         print("HANDLING REQUEST")
         # self.request is the TCP socket connected to the client
         text = self.request.recv(1024).strip()
-        print(text)
         if "token" in text.decode("utf-8"):
             data = text.decode("utf-8")
-            print(data)
+            # print(data)
             self.request.sendall("HTTP/1.1 200 OK\n".encode())
             token = re.search("(?<=token=)(.*?)(?=[!\s])", data).group()
-            with open("token.txt", "w") as f:
-                f.write(token)
-            f.close()
+            current_dir = os.getcwd()
+            with open(current_dir + "/sublime-text-file-sync/token.txt", "w") as f:
+            	f.write(token)
 
 def run_server():
     HOST, PORT = "localhost", 8001
@@ -50,6 +49,7 @@ def run_server():
     # Create the server, binding to localhost on port 8001
     server = socketserver.TCPServer((HOST, PORT), MyTCPHandler)
     print("Server created")
+    webbrowser.open("http://localhost:8000/redirect")
     # Activate the server; this will keep running until you
     # interrupt the program with Ctrl-C
     try:
@@ -59,4 +59,4 @@ def run_server():
         server.server_close()
     except:
         server.server_close()
-run_server()
+
