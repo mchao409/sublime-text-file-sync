@@ -2,7 +2,21 @@ import urllib
 import json
 
 # TODO: Dealing with invalid arguments
+class Error(Exception):
+    """Base class for exceptions in this module."""
+    pass
 
+class InputError(Error):
+    """Exception raised for errors in the input.
+    Attributes:
+        expression -- input expression in which the error occurred
+        message -- explanation of the error
+    """
+    def __init__(self, expression, message):
+        self.expression = expression
+        self.message = message
+
+	
 class DropboxRequest:
     def __init__(self,token):
         self.token = token
@@ -34,7 +48,7 @@ class DropboxRequest:
         for file_info in list_files:
             if file_info["name"].lower() == file_name.lower():
                 return file_info["id"]
-        return "NOT FOUND" ## Throw Exception -- need to implement
+        raise InputError(file_name, "File Not Found")
     
     def get_file_path(self,file_name):
         """ Gets the Dropbox path of a file
@@ -47,7 +61,7 @@ class DropboxRequest:
         for file_info in list_files:
             if file_info["name"].lower() == file_name.lower():
                 return file_info["path_lower"]
-        return "NOT FOUND"
+        raise InputError(file_name, "File Not Found")
     
     def list_folder(self):
         """ Gets a list of all files locally hosted in Dropbox
@@ -77,7 +91,7 @@ class DropboxRequest:
         }
         return DropboxRequest.make_request(url, headers)
     
-    def update_remote(self,dropbox_path, path_to_file):
+    def update_remote(self, dropbox_path, path_to_file):
         """ Updates the content of the file currently hosted on Dropbox with the given file.
            If content is not there, the file will be created on Dropbox
         Args: 
@@ -92,12 +106,11 @@ class DropboxRequest:
                 "Content-Type": "application/octet-stream",
                 "Dropbox-API-Arg": "{\"path\":\"" + dropbox_path + "\",\"mode\":{\".tag\":\"overwrite\"}}"
         }
-        data = open(path_to_file, "rb").read()
+        data = None
+    	try:
+		    data = open(path_to_file, "rb").read()
+        except IOError:
+            print "Could not read file:", path_to_file
+			raise
         return DropboxRequest.make_request(url,headers,data)
             
-  
-
-
-
-
-
