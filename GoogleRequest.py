@@ -27,6 +27,7 @@ class GoogleRequest:
             url of call, headers of call, optional data
         Returns:
             Request string
+	Need to figure out how to do PATCH method with urllib
         """
         if(data == None):
             req = urllib.request.Request(url,None,headers)
@@ -80,9 +81,10 @@ class GoogleRequest:
             name: The name of the file
         Returns:
             A string containing the content of the corresponding file in Google
+	Why do we get redirect status here?
         """
         file_id = self.get_file_id(name)
-        url = "https://www.googleapis.com/drive/v3/files/" + file_id
+        url = "https://www.googleapis.com/drive/v3/files/" + file_id + “?alt=media”
         headers = {
             "Authorization": "Bearer " + self.token,
         }
@@ -96,8 +98,10 @@ class GoogleRequest:
             path_to_file: the local path to the file
         Returns:
             a json file
+	This command was successful in updating remote content:
+		curl -X PATCH  -d "@data.txt" -H "Content-Type: multipart/mixed" "https://www.googleapis.com/upload/drive/v3/files/11G-DKcActbNNA4PPCuF_oNLSeHjeitm4unxoXTerrxA?uploadType=media&access_token=ya29.GltlBZeVqPMUbQ61QkFb2Dzxs_kmvsl63AogGI36TDn1YBYfTpZNGKEzRr68FM-UCQQntAb29NVPtg8xCa8n45y1zR9Hz_YVrNMX_CaBCpocdQGYvtHmNmL57hkA"
         """
-        url = "https://www.googleapis.com/upload/drive/v3/files/" + file_id + "&uploadType=media"
+        url = "https://www.googleapis.com/upload/drive/v3/files/" + file_id + “?uploadType=media"
         headers = {
                 "Authorization": "Bearer " + self.token,
                 "Content-Type": "application/octet-stream"
