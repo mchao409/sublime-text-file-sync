@@ -63,7 +63,7 @@ class DropboxRequest:
                 return file_info["path_lower"]
         raise InputError(file_name, "File Not Found")
     
-    def list_folder(self,file_path=“”):
+    def list_folder(self,file_path=""):
         """ Gets a list of all files locally hosted in Dropbox
         Args: 
             file_path: string path to the folder to look in
@@ -107,10 +107,10 @@ class DropboxRequest:
                 "Dropbox-API-Arg": "{\"path\":\"" + dropbox_path + "\",\"mode\":{\".tag\":\"overwrite\"}}"
         }
         data = None
-    	try:
-		    data = open(path_to_file, "rb").read()
-        except IOError:
-            print "Could not read file:", path_to_file
-			raise
+   #      try:
+   #          data = open(path_to_file, "rb").read()
+   #      except IOError:
+   #          print ("Could not read file:", path_to_file)
+			# raise
         return DropboxRequest.make_request(url,headers,data)
             

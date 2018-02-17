@@ -84,7 +84,7 @@ class GoogleRequest:
 	Why do we get redirect status here?
         """
         file_id = self.get_file_id(name)
-        url = "https://www.googleapis.com/drive/v3/files/" + file_id + “?alt=media”
+        url = "https://www.googleapis.com/drive/v3/files/" + file_id + "?alt=media"
         headers = {
             "Authorization": "Bearer " + self.token,
         }
@@ -101,15 +101,19 @@ class GoogleRequest:
 	This command was successful in updating remote content:
 		curl -X PATCH  -d "@data.txt" -H "Content-Type: multipart/mixed" "https://www.googleapis.com/upload/drive/v3/files/11G-DKcActbNNA4PPCuF_oNLSeHjeitm4unxoXTerrxA?uploadType=media&access_token=ya29.GltlBZeVqPMUbQ61QkFb2Dzxs_kmvsl63AogGI36TDn1YBYfTpZNGKEzRr68FM-UCQQntAb29NVPtg8xCa8n45y1zR9Hz_YVrNMX_CaBCpocdQGYvtHmNmL57hkA"
         """
-        url = "https://www.googleapis.com/upload/drive/v3/files/" + file_id + “?uploadType=media"
+        url = "https://www.googleapis.com/upload/drive/v3/files/" + file_id + "?uploadType=media"
         headers = {
                 "Authorization": "Bearer " + self.token,
                 "Content-Type": "application/octet-stream"
         }
         data = None
-    	try:
-		    data = open(path_to_file, "rb").read()
+        try:
+            data = open(path_to_file, "rb").read()
         except IOError:
-            print "Could not read file:", path_to_file
-			raise
+            print("Could not read file: " + path_to_file)
+   #  	try:
+		 #    data = open(path_to_file, "rb").read()
+   #      except IOError:
+   #          print "Could not read file:", path_to_file
+			# raise
         return GoogleRequest.make_request(url,headers,data)
