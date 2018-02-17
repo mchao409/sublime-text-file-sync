@@ -63,16 +63,16 @@ class DropboxRequest:
                 return file_info["path_lower"]
         raise InputError(file_name, "File Not Found")
     
-    def list_folder(self):
+    def list_folder(self,file_path=“”):
         """ Gets a list of all files locally hosted in Dropbox
         Args: 
-            path: string path to the folder to look in
+            file_path: string path to the folder to look in
         Returns: a dict containing information about that folder
         """
         url = "https://api.dropboxapi.com/2/files/list_folder"
         headers = {"Authorization": "Bearer " + self.token,
                   "Content-Type": "application/json"}
-        data = {"path": "",
+        data = {"path": file_path,
                "recursive": True}
         return json.loads(DropboxRequest.make_request(url, headers,data=json.dumps(data).encode()))["entries"]
     
