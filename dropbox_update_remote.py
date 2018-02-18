@@ -3,7 +3,7 @@ import sublime_plugin
 from .DropboxRequest import DropboxRequest
 import os
 
-class UpdateRemoteCommand(sublime_plugin.TextCommand):
+class DropboxUpdateRemoteCommand(sublime_plugin.TextCommand):
 	"""
 	Overrides the content of the Dropbox-hosted file with the content of the current file.
 	"""

@@ -9,19 +9,48 @@
         "id": "Sublime-Sync",
         "children":
         [
+
             {
-                "command": "authenticate",
-                "caption": "Authenticate",
+                "caption":"Google Drive",
+                "id":"google-drive",
+                "children":
+                [
+                    {
+                        "caption":"Authenticate",
+                        "command":"google_authenticate"
+                    },
+                    {
+                        "caption": "Update Local",
+                        "command":"google_update_local"
+                    },
+                    {
+                        "caption":"Update Remote",
+                        "command": "google_update_remote"
+                    }
+                ]
 
             },
+
             {
-                "command": "update_local",
-                "caption": "Update Local"
-            },
-            {
-                "command": "update_remote",
-                "caption": "Update Remote"
-            },
+                "caption":"Dropbox",
+                "id":"dropbox",
+                "children":
+                [
+                    {
+                        "caption": "Authenticate",
+                        "command":"dropbox_authenticate"
+                    },
+                    {
+                        "caption":"Update Local",
+                        "command":"dropbox_update_local"
+                    },
+                    {
+                        "caption": "Update Remote",
+                        "command": "dropbox_update_remote"
+                    }
+
+                ]
+            }
 
         ]
     },

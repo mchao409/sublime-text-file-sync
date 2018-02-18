@@ -3,7 +3,7 @@ import sublime_plugin
 from .DropboxRequest import DropboxRequest
 import os
 
-class UpdateLocalCommand(sublime_plugin.TextCommand):
+class DropboxUpdateLocalCommand(sublime_plugin.TextCommand):
 	"""
 	Updates the local window with the file that is hosted on Dropbox. 
 	"""
