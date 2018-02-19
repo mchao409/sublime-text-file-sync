@@ -18,3 +18,9 @@
 ### February 9th, 2018
 * Continue working on OAuth component of project, created a listening server for receiving the token.
 
+### February 11th-16th
+* Other's Project Week: Anjalie added GoogleRequest.py
+
+### February 20th
+* Added login capabilities to server
+
