@@ -8,10 +8,11 @@ class DropboxUpdateLocalCommand(sublime_plugin.TextCommand):
 	Updates the local window with the file that is hosted on Dropbox. 
 	"""
 	def run(self, edit):
+		self.view.run_command("login")
+
 		current_dir = os.getcwd()
 		token = open(current_dir + "/sublime-text-file-sync-token.txt").readline()
 		print(token)
-
 		a = DropboxRequest(token)
 		path_to_file = self.view.file_name()
 		file_name = path_to_file[path_to_file.rfind("/")+1:]
@@ -22,4 +23,7 @@ class DropboxUpdateLocalCommand(sublime_plugin.TextCommand):
 
 		# ... with the text in the locally-hosted file
 		self.view.insert(edit, 0, text)
+
+	def update_local(self):
+		pass
 		
