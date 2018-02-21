@@ -2,10 +2,7 @@
 
 ### TODO:
 * (Server)[https://github.com/mchao409/sublimeserver]
-* Add functionality for Google Chrome
-* `DropboxRequest.py`: deal with invalid arguments
-* Add OAuth2 functionality to plugin --> not sure how to go about this yet.
-* Figure out environment variables for application key/secret.
+* Rewrite code in DropboxRequest.py and GoogleRequest.py using the `requests` module
 
 #### Installing the repository
 1. Make sure you have Sublime Text 3 installed. You can get it [here](https://www.sublimetext.com/3).
