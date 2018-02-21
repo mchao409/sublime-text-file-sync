@@ -16,7 +16,7 @@
 3. Type in `view.run_command('example')` in the console and look in the top left corner of the code document.
 
 #### Jupyter Notebooks
-Jupyter Notebooks can't be accessed from the ~/Library directory (at least I don't think so?), so if you want to use it, you'll need to move it to another location on your computer to work on it and copy it back into the git repository folder once you're finished.
+Jupyter Notebooks can't be accessed from the ~/Library directory (at least I don't think so?), so if you want to use it, you'll need to move it to another location on your computer to work on it and copy it back into the git repository folder once you're finished. 
 
 ##### External Libraries
-Can only use default modules included in Python 3 and possibly a couple external ones, due to Sublime's Plugin API restrictions.
+Can only use default modules included in Python 3 and possibly a couple external ones, due to Sublime's Plugin API restrictions. Added the `requests` module in the `lib` folder.
