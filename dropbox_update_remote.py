@@ -11,6 +11,7 @@ class DropboxUpdateRemoteCommand(sublime_plugin.TextCommand):
 
 		current_dir = os.getcwd()
 		token = open(current_dir + "/sublime-text-file-sync-token.txt").readline()
+		print(token)
 		path_to_file = self.view.file_name()
 		a = DropboxRequest(token)
 		file_name = path_to_file[path_to_file.rfind("/")+1:]
