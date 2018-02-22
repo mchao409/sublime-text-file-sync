@@ -1,6 +1,7 @@
 import sublime, sublime_plugin
 import requests
 import pickle
+import webbrowser
 class LoginCommand(sublime_plugin.WindowCommand):
 
     def run(self):
@@ -24,7 +25,7 @@ class LoginCommand(sublime_plugin.WindowCommand):
                   headers={"X-CSRFToken":r.cookies["csrftoken"]},
                  cookies=r.cookies)
         if len(l.cookies) == 0 or ("error" in l.text.lower()):
-            sublime.message_dialog("Failed to login. Please try again.")
+            sublime.message_dialog("Failed to login.")
         else:
             sublime.message_dialog("You've been logged in.")
             print("here is the page")
