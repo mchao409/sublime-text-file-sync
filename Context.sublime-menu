@@ -9,6 +9,16 @@
         "id": "Sublime-Sync",
         "children":
         [
+            {
+                "caption": "Login",
+                "command": "login",
+            },
+
+            {
+                "caption": "Logout",
+                "command": "logout"
+            },
+
 
             {
                 "caption":"Google Drive",
