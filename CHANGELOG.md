@@ -24,3 +24,9 @@
 ### February 20th
 * Added login capabilities to server
 
+### February 21th
+* Finish login capabilities to server, begin working on logging in through Sublime plugin
+
+### February 22th
+* Finished Dropbox `update_remote` and `update_local` -- project should be complete and it should be possible to upload/download from Dropbox.
+* Worked on some documentation, cleaned up some of the unecessary files in folder.
