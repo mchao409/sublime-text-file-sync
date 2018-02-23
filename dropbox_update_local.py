@@ -1,6 +1,5 @@
 import sublime
 import sublime_plugin
-from .DropboxRequest import DropboxRequest
 import os
 import requests
 import pickle
@@ -17,7 +16,8 @@ class DropboxUpdateLocalCommand(sublime_plugin.TextCommand):
 			client.cookies = cookie
 		path_to_file = self.view.file_name()
 		file_name = path_to_file[path_to_file.rfind("/")+1:]
-		a = client.post("http://localhost:8000/dropbox/update_local", 
+		# a = client.post("http://localhost:8000/dropbox/update_local", 
+		a = client.post("https://sublimesync.herokuapp.com/dropbox/update_local",
                   headers={"X-CSRFToken": client.cookies["csrftoken"]},
                    data={"name": file_name})		
 		# text = a.download(file_name)
