@@ -19,6 +19,11 @@
                 "command": "logout"
             },
 
+            {
+                "caption": "Signup",
+                "command": "signup"
+            },
+
 
             {
                 "caption":"Google Drive",

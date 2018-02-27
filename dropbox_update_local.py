@@ -9,7 +9,7 @@ class DropboxUpdateLocalCommand(sublime_plugin.TextCommand):
 	Updates the local window with the file that is hosted on Dropbox. 
 	"""
 	def run(self, edit):
-		self.view.run_command("login")
+		sublime.active_window().run_command("login")
 		client = requests.session()
 		with open("cookie.txt","rb") as f:
 			cookie = pickle.load(f)
