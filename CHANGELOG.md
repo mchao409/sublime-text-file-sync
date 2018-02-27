@@ -12,21 +12,27 @@
 ### February 6, 2018
 * Research/Work on Django server (code not on GitHub right now)
 
-### February 8th, 2018
+### February 8, 2018
 * Django server added to GitHub, separate repository.
 
-### February 9th, 2018
+### February 9, 2018
 * Continue working on OAuth component of project, created a listening server for receiving the token.
 
-### February 11th-16th
+### February 11-16, 2018
 * Other's Project Week: Anjalie added GoogleRequest.py
 
-### February 20th
+### February 20, 2018
 * Added login capabilities to server
 
-### February 21th
+### February 21, 2018
 * Finish login capabilities to server, begin working on logging in through Sublime plugin
 
-### February 22th
-* Finished Dropbox `update_remote` and `update_local` -- project should be complete and it should be possible to upload/download from Dropbox.
+### February 22, 2018
+* Finished Dropbox `update_remote` and `update_local` -- it should be possible to upload/download from Dropbox.
 * Worked on some documentation, cleaned up some of the unecessary files in folder.
+
+### February 23, 2018
+* Began working on adding the Google Drive component to the project
+* Added Google Drive authorization to Django server
+
+
