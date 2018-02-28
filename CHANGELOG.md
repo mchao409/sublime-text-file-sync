@@ -33,6 +33,6 @@
 
 ### February 23, 2018
 * Began working on adding the Google Drive component to the project
-* Added Google Drive authorization to Django server
+* Added Google Drive authorization to Django server.
 
 

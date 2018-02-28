@@ -5,7 +5,8 @@
 #### Installing the repository
 1. Make sure you have Sublime Text 3 installed. You can get it [here](https://www.sublimetext.com/3).
 2. Open your command line and type in `cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/`. This is where Sublime Text finds all of its plugins, for MacOS.
-3. Clone the repository in this folder using `git clone`. 
+3. Fork the repository and clone the fork into this folder using `git clone <fork url>`. 
+4. Making a pull request: Please explain clearly in the body of your PR the changes you made to the repository.
 
 #### Running plugins
 
