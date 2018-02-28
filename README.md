@@ -4,7 +4,8 @@ This is a plugin for Sublime Text that allows you to to synchronize your files u
 
 For the server component of this project, please click [here](https://github.com/mchao409/sublimeserver)
 
-##### How to use
+##### How to use this
+Note: Only currently tested for MacOSX
 1. Download Sublime Text 3
 2. Navigate to `~/Library/Application Support/Sublime Text 3/Packages` and clone the repository
 3. Go to [this](https://sublimesync.herokuapp.com) website, create an account, and authorize the application with Dropbox and/or Google Drive.
