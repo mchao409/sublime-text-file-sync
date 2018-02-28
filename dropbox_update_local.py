@@ -3,7 +3,7 @@ import sublime_plugin
 import os
 import requests
 import pickle
-
+import ssl
 class DropboxUpdateLocalCommand(sublime_plugin.TextCommand):
 	"""
 	Updates the local window with the file that is hosted on Dropbox. 
@@ -17,9 +17,9 @@ class DropboxUpdateLocalCommand(sublime_plugin.TextCommand):
 		path_to_file = self.view.file_name()
 		file_name = path_to_file[path_to_file.rfind("/")+1:]
 		# a = client.post("http://localhost:8000/dropbox/update_local", 
-		a = client.post("https://sublimesync.herokuapp.com/dropbox/update_local",
+		a = client.post("http://sublimesync.herokuapp.com/dropbox/update_local",
                   headers={"X-CSRFToken": client.cookies["csrftoken"]},
-                   data={"name": file_name})		
+                   data={"name": file_name},)		
 		# text = a.download(file_name)
 		# # Replace the current text in the file....
 		self.view.erase(edit, sublime.Region(0,self.view.size()))

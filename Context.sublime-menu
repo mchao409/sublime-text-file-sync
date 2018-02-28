@@ -31,10 +31,6 @@
                 "children":
                 [
                     {
-                        "caption":"Authenticate",
-                        "command":"google_authenticate"
-                    },
-                    {
                         "caption": "Update Local",
                         "command":"google_update_local"
                     },
@@ -51,10 +47,6 @@
                 "id":"dropbox",
                 "children":
                 [
-                    {
-                        "caption": "Authenticate",
-                        "command":"dropbox_authenticate"
-                    },
                     {
                         "caption":"Update Local",
                         "command":"dropbox_update_local"

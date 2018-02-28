@@ -14,12 +14,14 @@ class LogoutCommand(sublime_plugin.TextCommand):
                 with open("cookie.txt", "rb") as f:
                     cookie = pickle.load(f)
                     client.cookies = cookie
-                    page = client.get("http://localhost:8000/logout", 
+                    page = client.get("http://sublimesync.herokuapp.com",
+                    # page = client.get("http://localhost:8000/logout", 
                         headers={"X-CSRFToken": client.cookies["csrftoken"]})
                 open("cookie.txt").close()
             except:
                 print("Error occured in logout")
                 pass
+            sublime.message_dialog("You've been logged out.")
 
     def check_if_logged_in(self):
         client = requests.session()
@@ -27,7 +29,8 @@ class LogoutCommand(sublime_plugin.TextCommand):
             with open("cookie.txt","rb") as f:
                 cookie = pickle.load(f)
                 client.cookies = cookie
-                page = client.post("http://localhost:8000/", 
+                page = client.post("http://sublimesync.herokuapp.com",
+                # page = client.post("http://localhost:8000/", 
                     headers={"X-CSRFToken":client.cookies["csrftoken"]})
                 # print(page.text)
                 if "logout" in page.text.lower():
@@ -36,7 +39,8 @@ class LogoutCommand(sublime_plugin.TextCommand):
         except:
             print("error occurred")
             return False
-        r = client.get("http://localhost:8000")
+        r = client.get("http://sublimesync.herokuapp.com")
+        # r = client.get("http://localhost:8000")
         if len(r.cookies) == 0:
             pass
             return False
